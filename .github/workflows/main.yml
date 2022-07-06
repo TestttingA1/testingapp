@@ -9,9 +9,9 @@ on:
 
 
 jobs:
-  job_one:
-    name: Deploy
-    runs-on: ubuntu-latest
+  build:
+
+    runs-on: self-hosted
 
     strategy:
       matrix:
@@ -28,12 +28,3 @@ jobs:
     - run: npm i
     - run: npm test
     - run: npm run build
-    - name: testing omgnerring.com server ssh connection 
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: 22
-        script: whoami
-        
